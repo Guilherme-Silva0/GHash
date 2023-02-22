@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Board from "./components/Board";
+
 function App() {
   const startingGame = [
     ["", "", ""],
@@ -10,11 +12,7 @@ function App() {
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [playing, setPlaying] = useState(true);
 
-  return (
-    <>
-      <h1>Ready to code X O</h1>
-    </>
-  );
+  return <Board game={game} />;
 }
 
 export default App;
