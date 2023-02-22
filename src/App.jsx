@@ -71,6 +71,10 @@ function App() {
     return victory;
   };
 
+  const togglePlayer = () => {
+    currentPlayer === "X" ? setCurrentPlayer("O") : setCurrentPlayer("X");
+  };
+
   return <Board game={game} />;
 }
 
