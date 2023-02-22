@@ -75,6 +75,14 @@ function App() {
     currentPlayer === "X" ? setCurrentPlayer("O") : setCurrentPlayer("X");
   };
 
+  const position = (e) => {
+    const posString = e.target.getAttribute("data-pos");
+    const pos = [
+      parseInt(posString.substring(0, 1)),
+      parseInt(posString.substring(1, 2)),
+    ];
+  };
+
   return <Board game={game} />;
 }
 
