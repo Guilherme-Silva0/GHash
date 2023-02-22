@@ -83,6 +83,14 @@ function App() {
     ];
   };
 
+  const checkEmptySquare = (e) => {
+    if (game[position(e)[0]][position(e)[1]] === "") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return <Board game={game} />;
 }
 
