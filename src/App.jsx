@@ -107,6 +107,12 @@ function App() {
     }
   };
 
+  const restart = () => {
+    setPlaying(true);
+    setGame(startingGame);
+    setCurrentPlayer("X");
+  };
+
   return <Board game={game} />;
 }
 
