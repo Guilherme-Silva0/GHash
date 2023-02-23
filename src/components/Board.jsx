@@ -4,12 +4,12 @@ import Line from "./Line";
 
 import "./Board.css";
 
-const Board = ({ game }) => {
+const Board = ({ game, play }) => {
   return (
     <div className="table">
-      <Line game={game} line={0} />
-      <Line game={game} line={1} />
-      <Line game={game} line={2} />
+      <Line game={game} line={0} play={play} />
+      <Line game={game} line={1} play={play} />
+      <Line game={game} line={2} play={play} />
     </div>
   );
 };

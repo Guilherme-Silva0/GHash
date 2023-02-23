@@ -1,11 +1,13 @@
 import Square from "./Square";
 
-const Line = ({ game, line }) => {
+import "./Line.css";
+
+const Line = ({ game, line, play }) => {
   return (
     <div className="line">
-      <Square game={game} line={line} square={0} />
-      <Square game={game} line={line} square={1} />
-      <Square game={game} line={line} square={2} />
+      <Square game={game} line={line} square={0} onClick={(e) => play(e)} />
+      <Square game={game} line={line} square={1} onClick={(e) => play(e)} />
+      <Square game={game} line={line} square={2} onClick={(e) => play(e)} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Board from "./components/Board";
+import Button from "./components/Button";
 
 function App() {
   const startingGame = [
@@ -47,10 +48,8 @@ function App() {
     //diagonals
     score = 0;
     for (let d = 0; d < 3; d++) {
-      if (game[d][d]) {
-        if (game[l][c] === currentPlayer) {
-          score++;
-        }
+      if (game[d][d] === currentPlayer) {
+        score++;
       }
     }
     if (score >= 3) {
@@ -81,6 +80,7 @@ function App() {
       parseInt(posString.substring(0, 1)),
       parseInt(posString.substring(1, 2)),
     ];
+    return pos;
   };
 
   const checkEmptySquare = (e) => {
@@ -94,7 +94,8 @@ function App() {
   const play = (e) => {
     if (playing) {
       if (checkEmptySquare(e)) {
-        game[(position(e)[0], position(e)[1])];
+        game[position(e)[0]][position(e)[1]] = currentPlayer;
+        setGame([...game]);
         togglePlayer();
         if (checkVictory()) {
           togglePlayer();
@@ -113,7 +114,13 @@ function App() {
     setCurrentPlayer("X");
   };
 
-  return <Board game={game} />;
+  return (
+    <>
+      <h3>Vez de: {currentPlayer}</h3>
+      <Board game={game} play={play} />
+      {playing ? "" : <Button onClick={() => restart()}>Reiniciar jogo</Button>}
+    </>
+  );
 }
 
 export default App;
