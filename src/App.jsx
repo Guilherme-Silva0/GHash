@@ -91,6 +91,22 @@ function App() {
     }
   };
 
+  const play = (e) => {
+    if (playing) {
+      if (checkEmptySquare(e)) {
+        game[(position(e)[0], position(e)[1])];
+        togglePlayer();
+        if (checkVictory()) {
+          togglePlayer();
+          alert(`Jogador ${currentPlayer} venceu`);
+          setPlaying(false);
+        }
+      } else {
+        alert("Essa posição já esta ocupada!");
+      }
+    }
+  };
+
   return <Board game={game} />;
 }
 
