@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Board from "./components/Board";
-import Button from "./components/Button";
+import ResultScreen from "./components/ResultScreen";
 
 function App() {
   const startingGame = [
@@ -12,6 +12,7 @@ function App() {
   const [game, setGame] = useState(startingGame);
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [playing, setPlaying] = useState(true);
+  const [winner, setWinner] = useState(null);
 
   const checkVictory = () => {
     let score = 0;
@@ -115,14 +116,11 @@ function App() {
         togglePlayer();
         if (checkVictory()) {
           togglePlayer();
-          alert(`Jogador ${currentPlayer} venceu`);
+          setWinner(currentPlayer);
           setPlaying(false);
         } else if (checkDraw()) {
-          alert("Empate!");
           setPlaying(false);
         }
-      } else {
-        alert("Essa posição já esta ocupada!");
       }
     }
   };
@@ -131,13 +129,14 @@ function App() {
     setPlaying(true);
     setGame(startingGame);
     setCurrentPlayer("X");
+    setWinner(false);
   };
 
   return (
     <>
+      {playing ? "" : <ResultScreen onRestart={restart} winner={winner} />}
       <h3>Vez de: {currentPlayer}</h3>
       <Board game={game} play={play} />
-      {playing ? "" : <Button onClick={() => restart()}>Reiniciar jogo</Button>}
     </>
   );
 }
