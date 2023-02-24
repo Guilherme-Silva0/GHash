@@ -91,6 +91,22 @@ function App() {
     }
   };
 
+  const checkDraw = () => {
+    let filledSquares = 0;
+    for (let l = 0; l < 3; l++) {
+      for (let c = 0; c < 3; c++) {
+        if (game[l][c] !== "") {
+          filledSquares++;
+        }
+      }
+    }
+    if (filledSquares === 9 && !checkVictory()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const play = (e) => {
     if (playing) {
       if (checkEmptySquare(e)) {
@@ -100,6 +116,9 @@ function App() {
         if (checkVictory()) {
           togglePlayer();
           alert(`Jogador ${currentPlayer} venceu`);
+          setPlaying(false);
+        } else if (checkDraw()) {
+          alert("Empate!");
           setPlaying(false);
         }
       } else {
