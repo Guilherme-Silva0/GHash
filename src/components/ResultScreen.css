@@ -1,0 +1,20 @@
+.result-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.result-message {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #efefef;
+  text-shadow: 2px 2px 1px #000;
+}
