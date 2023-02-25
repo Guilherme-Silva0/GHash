@@ -10,7 +10,7 @@ const ResultScreen = ({ winner, onRestart }) => {
     const audio = new Audio(victorySound);
     audio.volume = 0.4;
     audio.play();
-  }, []);
+  }, [winner]);
 
   return (
     <div className="result-screen">
